@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Loja de games</title>
+    <hr>
+    <h4>Lista de games</h4>
+    <ul id="games"></ul>
+    <hr>
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+    axios.get("http://localhost:45678/gamer").then(response => {
+        var games = response.data;
+        var list = document.getElementById("games");
+
+        games.forEach(game => {
+            var item = document.createElement("li");
+            item.innerHTML = game.title;
+            list.appendChild(item);
+        });
+
+
+    }).catch( erro =>{
+        console.log(erro);
+    });
+
+
+</script>
+</html>
